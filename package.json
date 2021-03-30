@@ -1,7 +1,7 @@
 {
-  "name": "sanity-plugin-markdown-mde",
-  "version": "1.0.0",
-  "description": "A markdown input component that supports image uploads, like Github.",
+  "name": "sanity-plugin-markdown",
+  "version": "2.0.0",
+  "description": "Markdown fields in Sanity Studio. Supports Github flavored Markdown and image uploads.",
   "scripts": {
     "build": "sanipack build",
     "watch": "sanipack build --watch",
@@ -10,12 +10,14 @@
   "repository": {},
   "keywords": [
     "sanity",
-    "sanity-plugin"
+    "sanity-plugin",
+    "studio",
+    "markdown",
+    "github flavored markdown"
   ],
-  "author": "Rune Botten <rune@sanity.io>",
+  "author": "Sanity.io <hello@sanity.io>",
   "license": "MIT",
   "dependencies": {
-    "prop-types": "15.7.2",
     "react-markdown": "^5.0.3",
     "react-mde": "^11.0.6",
     "remark-gfm": "^1.0.0"
