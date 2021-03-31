@@ -5,7 +5,7 @@
   "scripts": {
     "build": "sanipack build",
     "watch": "sanipack build --watch",
-    "prepublishOnly": "sanipack build && sanipack verify"
+    "prepublishOnly": "sanipack build"
   },
   "keywords": [
     "sanity",
