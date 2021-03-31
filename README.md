@@ -27,11 +27,10 @@ const myDocument = {
   ]
 }
 ```
-### Editor
-<img width="772" alt="Screen Shot 2021-03-29 at 7 06 21 PM" src="https://user-images.githubusercontent.com/38528/112922769-e8937d80-90c1-11eb-9f1b-af3ae1b45a8d.png">
+### Demo
 
-### Preview
-<img width="774" alt="Screen Shot 2021-03-29 at 7 06 25 PM" src="https://user-images.githubusercontent.com/38528/112922737-de717f00-90c1-11eb-9460-4cc7379ec416.png">
+![demo](https://user-images.githubusercontent.com/38528/113196621-91ec8780-9218-11eb-86cc-cf0adfa2fd01.gif)
+
 
 ## License
 
