@@ -17,7 +17,15 @@ const Preview = ({markdown}) => {
   return <ReactMarkdown plugins={[gfm]}>{markdown}</ReactMarkdown>
 }
 
+const defaultToolbarCommands = [
+  ['header', 'bold', 'italic', 'strikethrough'],
+  ['link', 'quote', 'code'],
+  ['unordered-list', 'ordered-list', 'checked-list'],
+]
+
 export default function Editor(props) {
+  const {type} = props
+  const {options = {}} = type
   const [value, setValue] = React.useState(props.value)
   const [selectedTab, setSelectedTab] = React.useState('write')
   const debouncedValue = useDebounce(value, 200)
@@ -54,11 +62,7 @@ export default function Editor(props) {
     >
       <div className="container">
         <ReactMde
-          toolbarCommands={[
-            ['header', 'bold', 'italic', 'strikethrough'],
-            ['link', 'quote', 'code'],
-            ['unordered-list', 'ordered-list', 'checked-list'],
-          ]}
+          toolbarCommands={options['toolbar'] || defaultToolbarCommands}
           value={value}
           onChange={setValue}
           selectedTab={selectedTab}
@@ -69,7 +73,7 @@ export default function Editor(props) {
               tabIndex: -1,
             },
           }}
-          paste={{ saveImage }}
+          paste={{saveImage}}
         />
       </div>
     </Fieldset>
