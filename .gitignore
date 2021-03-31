@@ -1,3 +1,4 @@
+*.tgz
 lib
 # Logs
 logs
