@@ -7,7 +7,6 @@
     "watch": "sanipack build --watch",
     "prepublishOnly": "sanipack build && sanipack verify"
   },
-  "repository": {},
   "keywords": [
     "sanity",
     "sanity-plugin",
@@ -47,5 +46,13 @@
       "prettier",
       "prettier/react"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanity-io/sanity-plugin-markdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity-plugin-markdown/issues"
+  },
+  "homepage": "https://github.com/sanity-io/sanity-plugin-markdown"
 }
