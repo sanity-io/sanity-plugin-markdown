@@ -16,13 +16,9 @@ const myDocument = {
   name: "myDocument",
   fields: [
     {
-      type: "string",
-      name: "title"
-    },
-    {
       type: "markdown",
-      description: "This field supports Github flavored Markdown and image uploads",
-      name: "body"
+      description: "A Github flavored markdown field with image uploading",
+      name: "bio"
     }
   ]
 }
