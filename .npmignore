@@ -1,3 +1,5 @@
+src
+*.tgz
 /test
 /coverage
 .babelrc
