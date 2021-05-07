@@ -3,7 +3,7 @@ import ReactMde from 'react-mde'
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 
-import PatchEvent, {set} from 'part:@sanity/form-builder/patch-event'
+import PatchEvent, {set, unset} from 'part:@sanity/form-builder/patch-event'
 import sanityClient from 'part:@sanity/base/client'
 
 import Fieldset from 'part:@sanity/components/fieldsets/default'
@@ -24,14 +24,20 @@ const defaultToolbarCommands = [
 ]
 
 export default function Editor(props) {
-  const {type} = props
+  const {type, value} = props
   const {options = {}} = type
-  const [value, setValue] = React.useState(props.value)
   const [selectedTab, setSelectedTab] = React.useState('write')
-  const debouncedValue = useDebounce(value, 200)
+  const [editedValue, setEditedValue] = React.useState(value)
+  const debouncedValue = useDebounce(editedValue, 100)
+  
+  React.useEffect(() => {
+    setEditedValue(value)
+  }, [value])
 
   React.useEffect(() => {
-    if (debouncedValue) {
+    if (!debouncedValue || debouncedValue === "") {
+      props.onChange(PatchEvent.from([unset()]))
+    } else if (debouncedValue !== value) {
       props.onChange(PatchEvent.from([set(debouncedValue)]))
     }
   }, [debouncedValue])
@@ -63,8 +69,8 @@ export default function Editor(props) {
       <div className="container">
         <ReactMde
           toolbarCommands={options['toolbar'] || defaultToolbarCommands}
-          value={value}
-          onChange={setValue}
+          value={editedValue}
+          onChange={setEditedValue}
           selectedTab={selectedTab}
           onTabChange={setSelectedTab}
           generateMarkdownPreview={(markdown) => Promise.resolve(<Preview markdown={markdown} />)}
