@@ -17,6 +17,8 @@
   "author": "Sanity.io <hello@sanity.io>",
   "license": "MIT",
   "dependencies": {
+    "@sanity/ui": "^0.36.11",
+    "classnames": "^2.3.1",
     "react-markdown": "^5.0.3",
     "react-mde": "^11.5.0",
     "remark-gfm": "^1.0.0"
