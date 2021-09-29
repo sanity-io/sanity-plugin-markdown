@@ -38,8 +38,8 @@ export default function Editor(props) {
   const activationId = React.useMemo(() => uniqueId('MarkdownInput'), [])
 
   const [isFullscreen, setIsFullscreen] = React.useState(false)
-  const [portalElement, setPortalElement] = React.useState(null)
-  const [scrollContainerElement, setScrollContainerElement] = React.useState(null)
+  const [portalElement] = React.useState(null)
+  const [scrollContainerElement] = React.useState(null)
 
   const [selectedTab, setSelectedTab] = React.useState('write')
   const [editedValue, setEditedValue] = React.useState(value)
