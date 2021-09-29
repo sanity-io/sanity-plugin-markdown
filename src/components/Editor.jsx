@@ -29,6 +29,7 @@ const Preview = ({markdown}) => {
 const defaultToolbarCommands = [
   ['header', 'bold', 'italic', 'strikethrough'],
   ['link', 'quote', 'code'],
+  ['unordered-list', 'ordered-list', 'checked-list'],
 ]
 
 export default function Editor(props) {
