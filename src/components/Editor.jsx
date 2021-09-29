@@ -3,7 +3,7 @@ import ReactMde from 'react-mde'
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 import classNames from 'classnames'
-import {uniqueId, isEqual} from 'lodash'
+import {uniqueId} from 'lodash'
 
 import PatchEvent, {set, unset} from 'part:@sanity/form-builder/patch-event'
 import sanityClient from 'part:@sanity/base/client'
@@ -78,7 +78,10 @@ export default function Editor(props) {
   const mdEditor = React.useMemo(
     () => (
       <>
-        <ExpandCollapseButton isFullscreen={false} onToggleFullscreen={handleToggleFullscreen} />
+        <ExpandCollapseButton
+          isFullscreen={isFullscreen}
+          onToggleFullscreen={handleToggleFullscreen}
+        />
         <ReactMde
           toolbarCommands={options['toolbar'] || defaultToolbarCommands}
           value={editedValue}
