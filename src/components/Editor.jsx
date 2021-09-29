@@ -84,6 +84,7 @@ export default function Editor(props) {
           onChange={setEditedValue}
           selectedTab={selectedTab}
           onTabChange={setSelectedTab}
+          minEditorHeight={isFullscreen ? '100vh' : '500'}
           generateMarkdownPreview={(markdown) => Promise.resolve(<Preview markdown={markdown} />)}
           childProps={{
             writeButton: {
@@ -97,7 +98,7 @@ export default function Editor(props) {
         />
       </>
     ),
-    [editedValue, selectedTab, saveImage]
+    [editedValue, selectedTab, saveImage, isFullscreen]
   )
 
   return (
