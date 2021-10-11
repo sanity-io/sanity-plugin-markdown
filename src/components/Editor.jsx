@@ -23,7 +23,7 @@ const defaultToolbarCommands = [
 ]
 
 export default function Editor(props) {
-  const {type, value} = props
+  const {type, value = ''} = props
   const {options = {}} = type
   const [selectedTab, setSelectedTab] = React.useState('write')
   const [editedValue, setEditedValue] = React.useState(value)
