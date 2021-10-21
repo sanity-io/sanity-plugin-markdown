@@ -5,8 +5,7 @@ import gfm from 'remark-gfm'
 
 import PatchEvent, {set, unset} from 'part:@sanity/form-builder/patch-event'
 import sanityClient from 'part:@sanity/base/client'
-
-import Fieldset from 'part:@sanity/components/fieldsets/default'
+import {FormField} from '@sanity/base/components'
 
 import useDebounce from '../hooks/useDebounce'
 
@@ -23,7 +22,7 @@ const defaultToolbarCommands = [
 ]
 
 export default React.forwardRef(function MarkdownEditor(props, ref) {
-  const {type, value = ''} = props
+  const {type, value = '', markers, presence, readOnly} = props
   const {options = {}} = type
   const [selectedTab, setSelectedTab] = React.useState('write')
   const [editedValue, setEditedValue] = React.useState(value)
@@ -58,30 +57,28 @@ export default React.forwardRef(function MarkdownEditor(props, ref) {
   }
 
   return (
-    <Fieldset
-      markers={props.markers}
-      presence={props.presence}
-      legend={props.type.title}
-      description={props.type.description}
-      level={props.level}
+    <FormField
+      description={type.description} // Creates description from schema
+      title={type.title} // Creates label from schema title
+      __unstable_markers={markers} // Handles all markers including validation
+      __unstable_presence={presence} // Handles presence avatars
     >
-      <div className="container">
-        <ReactMde
-          toolbarCommands={options['toolbar'] || defaultToolbarCommands}
-          value={editedValue}
-          onChange={setEditedValue}
-          selectedTab={selectedTab}
-          onTabChange={setSelectedTab}
-          generateMarkdownPreview={(markdown) => Promise.resolve(<Preview markdown={markdown} />)}
-          childProps={{
-            writeButton: {
-              tabIndex: -1,
-            },
-          }}
-          refs={{textarea: ref}}
-          paste={{saveImage}}
-        />
-      </div>
-    </Fieldset>
+      <ReactMde
+        toolbarCommands={options['toolbar'] || defaultToolbarCommands}
+        value={editedValue}
+        onChange={setEditedValue}
+        selectedTab={selectedTab}
+        onTabChange={setSelectedTab}
+        readOnly={readOnly}
+        generateMarkdownPreview={(markdown) => Promise.resolve(<Preview markdown={markdown} />)}
+        childProps={{
+          writeButton: {
+            tabIndex: -1,
+          },
+        }}
+        refs={{textarea: ref}}
+        paste={{saveImage}}
+      />
+    </FormField>
   )
 })
