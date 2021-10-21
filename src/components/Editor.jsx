@@ -23,7 +23,6 @@ const defaultToolbarCommands = [
 
 export default React.forwardRef(function MarkdownEditor(props, ref) {
   const {type, value = '', markers, presence, readOnly} = props
-  console.log("Markdown props", props)
   const {options = {}} = type
   const [selectedTab, setSelectedTab] = React.useState('write')
   const [editedValue, setEditedValue] = React.useState(value)
