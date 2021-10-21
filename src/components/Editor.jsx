@@ -34,7 +34,7 @@ export default function Editor(props) {
   }, [value])
 
   React.useEffect(() => {
-    if (!debouncedValue || debouncedValue === "") {
+    if (!debouncedValue && value) {
       props.onChange(PatchEvent.from([unset()]))
     } else if (debouncedValue !== value) {
       props.onChange(PatchEvent.from([set(debouncedValue)]))
