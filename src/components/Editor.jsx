@@ -22,7 +22,7 @@ const defaultToolbarCommands = [
   ['unordered-list', 'ordered-list', 'checked-list'],
 ]
 
-export default function Editor(props) {
+export default React.forwardRef((props, ref) => {
   const {type, value = ''} = props
   const {options = {}} = type
   const [selectedTab, setSelectedTab] = React.useState('write')
@@ -78,9 +78,10 @@ export default function Editor(props) {
               tabIndex: -1,
             },
           }}
+          refs={{textarea: ref}}
           paste={{saveImage}}
         />
       </div>
     </Fieldset>
   )
-}
+})
