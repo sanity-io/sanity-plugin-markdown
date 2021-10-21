@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-markdown",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Markdown fields in Sanity Studio. Supports Github flavored Markdown and image uploads.",
   "scripts": {
     "build": "sanipack build",
@@ -30,6 +30,7 @@
     "sanipack": "^2.0.1"
   },
   "peerDependencies": {
+    "@sanity/base": "^2.21.5",
     "react": "^17.0.0"
   },
   "prettier": {
