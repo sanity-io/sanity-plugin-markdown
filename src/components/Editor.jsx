@@ -22,7 +22,7 @@ const defaultToolbarCommands = [
   ['unordered-list', 'ordered-list', 'checked-list'],
 ]
 
-export default React.forwardRef((props, ref) => {
+export default React.forwardRef(function MarkdownEditor(props, ref) {
   const {type, value = ''} = props
   const {options = {}} = type
   const [selectedTab, setSelectedTab] = React.useState('write')
