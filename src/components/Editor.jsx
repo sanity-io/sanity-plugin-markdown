@@ -28,7 +28,7 @@ export default function Editor(props) {
   const [selectedTab, setSelectedTab] = React.useState('write')
   const [editedValue, setEditedValue] = React.useState(value)
   const debouncedValue = useDebounce(editedValue, 100)
-  
+
   React.useEffect(() => {
     setEditedValue(value)
   }, [value])
