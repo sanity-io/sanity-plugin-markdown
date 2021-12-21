@@ -62,8 +62,11 @@ export default React.forwardRef(function MarkdownEditor(props, ref) {
       title={type.title} // Creates label from schema title
       __unstable_markers={markers} // Handles all markers including validation
       __unstable_presence={presence} // Handles presence avatars
+      onFocus={props.onFocus}
     >
       <ReactMde
+        ref={ref}
+        onFocus={props.onFocus}
         toolbarCommands={options['toolbar'] || defaultToolbarCommands}
         value={editedValue}
         onChange={setEditedValue}
@@ -76,7 +79,6 @@ export default React.forwardRef(function MarkdownEditor(props, ref) {
             tabIndex: -1,
           },
         }}
-        refs={{textarea: ref}}
         paste={{saveImage}}
       />
     </FormField>
