@@ -56,6 +56,16 @@ export default React.forwardRef(function MarkdownEditor(props, ref) {
     return success
   }
 
+  const tex = React.useRef()
+
+
+  // Style readOnly, awkwardly
+  React.useEffect(() => {
+    if (tex.current) {
+      tex.current.style.backgroundColor = readOnly ? 'rgba(240,240,240)' : 'rgba(255, 255, 255)'
+    }
+  }, [tex])
+
   return (
     <FormField
       description={type.description} // Creates description from schema
@@ -67,6 +77,9 @@ export default React.forwardRef(function MarkdownEditor(props, ref) {
       <ReactMde
         ref={ref}
         onFocus={props.onFocus}
+        refs={{
+          textarea: tex
+        }}
         toolbarCommands={options['toolbar'] || defaultToolbarCommands}
         value={editedValue}
         onChange={setEditedValue}
