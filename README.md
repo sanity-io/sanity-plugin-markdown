@@ -1,14 +1,47 @@
 # sanity-plugin-markdown
-A Markdown editor with preview for Sanity Studio. Supports Github flavored markdown and image uploads. You can either drag image(s) into the editor or click the bottom bar to bring up a file selector. The inserted image(s) has a default width crop in the url which you can change to your liking with the [Sanity image pipeline parameters](https://www.sanity.io/docs/image-urls).
+
+> **NOTE**
+>
+> This is the **Sanity Studio v3 version** of sanity-plugin-markdown.
+>
+> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-markdown).
+
+## What is it?
+
+A Markdown editor with preview for Sanity Studio. 
+
+Supports Github flavored markdown and image uploads. You can either drag image(s) into the editor or click the bottom bar to bring up a file selector. The resulting image URL(s) are inserted with a default width parameter which you can change to your liking using the [Sanity image pipeline parameters](https://www.sanity.io/docs/image-urls).
+
+![Markdown input](assets/markdown-input.png)
 
 ## Installation
 
 ```
-sanity install markdown
+npm install --save sanity-plugin-markdown@studio-v3
+```
+
+or
+
+```
+yarn add sanity-plugin-markdown@studio-v3
 ```
 
 ## Usage
-Declare a field in your schema to be `markdown`
+
+Add it as a plugin in sanity.config.ts (or .js):
+
+```js
+import { markdownSchema } from "sanity-plugin-markdown";
+
+export default createConfig({
+  // ...
+  plugins: [
+    markdownSchema(),
+  ] 
+})
+```
+
+Then, declare a field in your schema to be `markdown`
 
 ```javascript
 const myDocument = {
@@ -32,3 +65,25 @@ const myDocument = {
 
 MIT © Sanity.io
 See LICENSE
+
+## Develop & test
+
+Make sure to run `npm run build` once, then run
+
+```bash
+npm run link-watch
+```
+
+In another shell, `cd` to your test studio and run:
+
+```bash
+npx yalc add sanity-plugin-markdown --link && yarn install
+```
+
+Now, changes in this repo will be automatically built and pushed to the studio,
+triggering hotreload. Yalc avoids issues with react-hooks that are typical when using yarn/npm link.
+
+### About build & watch
+
+This plugin uses [@sanity/plugin-sdk](https://github.com/sanity-io/plugin-sdk)
+with default configuration for build & watch scripts.

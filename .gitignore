@@ -53,3 +53,9 @@ yarn.lock
 # Compiled plugin
 /lib
 
+yalc.lock
+.yalc
+
+.idea
+
+.parcel-cache
