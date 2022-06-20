@@ -68,22 +68,9 @@ See LICENSE
 
 ## Develop & test
 
-Make sure to run `npm run build` once, then run
-
-```bash
-npm run link-watch
-```
-
-In another shell, `cd` to your test studio and run:
-
-```bash
-npx yalc add sanity-plugin-markdown --link && yarn install
-```
-
-Now, changes in this repo will be automatically built and pushed to the studio,
-triggering hotreload. Yalc avoids issues with react-hooks that are typical when using yarn/npm link.
-
-### About build & watch
-
-This plugin uses [@sanity/plugin-sdk](https://github.com/sanity-io/plugin-sdk)
+This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
 with default configuration for build & watch scripts.
+
+See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
+on how to run this plugin with hotreload in the studio.
+
