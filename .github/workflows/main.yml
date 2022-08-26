@@ -60,7 +60,7 @@ jobs:
 
   release:
     name: Semantic release
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     # only run if opt-in during workflow_dispatch
     if: inputs.release == true
