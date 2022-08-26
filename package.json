@@ -39,18 +39,18 @@
   "license": "MIT",
   "dependencies": {
     "@reach/auto-id": "^0.17.0",
-    "@sanity/incompatible-plugin": "^0.0.1-studio-v3.3",
+    "@sanity/incompatible-plugin": "^1.0.0",
     "@sanity/ui": "^0.37.9",
-    "react-markdown": "^5.0.3",
-    "react-mde": "^11.5.0",
-    "remark-gfm": "^1.0.0"
+    "@uiw/react-md-editor": "^3.18.1",
+    "rehype-sanitize": "^5.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^15.0.0",
-    "@parcel/packager-ts": "^2.6.0",
-    "@parcel/transformer-typescript-types": "^2.6.0",
-    "@sanity/plugin-kit": "^0.0.1-studio-v3.4",
+    "@parcel/packager-ts": "^2.7.0",
+    "@parcel/transformer-typescript-types": "^2.7.0",
+    "@sanity/plugin-kit": "^1.0.1",
+    "@sanity/semantic-release-preset": "^2.0.0",
     "@types/styled-components": "^5.1.25",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
@@ -62,13 +62,13 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "husky": "^7.0.0",
     "lint-staged": "^12.3.3",
-    "parcel": "^2.6.0",
+    "parcel": "^2.7.0",
     "prettier": "^2.5.1",
     "react": "^17.0.0 || ^18.0.0",
     "rimraf": "^3.0.2",
-    "sanity": "^3.0.0-dev-preview.7",
+    "sanity": "3.0.0-dev-preview.15",
     "styled-components": "^5.2.0",
-    "typescript": "^4.7.3"
+    "typescript": "^4.8.2"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
