@@ -10,9 +10,15 @@
 
 A Markdown editor with preview for Sanity Studio. 
 
-Supports Github flavored markdown and image uploads. You can either drag image(s) into the editor or click the bottom bar to bring up a file selector. The resulting image URL(s) are inserted with a default width parameter which you can change to your liking using the [Sanity image pipeline parameters](https://www.sanity.io/docs/image-urls).
+Supports Github flavored markdown and image uploads. You can either drag image(s) into the editor or click the bottom bar to bring up a file selector. 
+The resulting image URL(s) are inserted with a default width parameter which you can change to your liking using the [Sanity image pipeline parameters](https://www.sanity.io/docs/image-urls).
+ 
+### Known issues with the current v3 version
 
-![Markdown input](assets/markdown-input.png)
+The v2 version used react-mde for editing. The current v3 version @uiw/react-md-editor. This may change before GA.
+
+At the moment the v3 version does not have drag-and-drop image upload support.
+You can still add markdown image tags, but you will have to get the image url yourself for now.
 
 ## Installation
 
@@ -74,3 +80,9 @@ with default configuration for build & watch scripts.
 See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
 on how to run this plugin with hotreload in the studio.
 
+### Release new version
+
+Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-plugin-markdown/actions).
+Make sure to select the main/v3 branch and check "Release new version".
+
+Semantic release will only release on configured branches, so it is safe to run release on any branch.
