@@ -41,26 +41,26 @@ jobs:
       - run: npm run lint --if-present
       - run: npm run prepublishOnly
 
-  test:
-    name: Test
-    needs: build
-    strategy:
-      matrix:
-        os: [ macos-latest, ubuntu-latest ]
-        node: [ lts/*, current ]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-          cache: npm
-      - run: npm ci
-      - run: npm test --if-present
+#  test:
+#    name: Test
+#    needs: build
+#    strategy:
+#      matrix:
+#        os: [ macos-latest, ubuntu-latest ]
+#        node: [ lts/*, current ]
+#    runs-on: ${{ matrix.os }}
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: ${{ matrix.node }}
+#          cache: npm
+#      - run: npm ci
+#      - run: npm test --if-present
 
   release:
     name: Semantic release
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     # only run if opt-in during workflow_dispatch
     if: inputs.release == true
