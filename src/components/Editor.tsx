@@ -10,10 +10,15 @@ export const MarkdownEditor = forwardRef(function MarkdownEditor(
   props: StringInputProps,
   ref: Ref<any>
 ) {
-  const {value = '', onBlur, onChange, onFocus, readOnly} = props
+  const {
+    value = '',
+    onChange,
+    elementProps: {onBlur, onFocus},
+    readOnly,
+  } = props
   const [editedValue, setEditedValue] = useState<string | undefined>(value)
   const debouncedValue = useDebounce(editedValue, 100)
-  // const sanityClient = useClient()
+  // const client = useClient({apiVersion: '2021-03-25'})
 
   useEffect(() => {
     setEditedValue(value)
@@ -29,7 +34,6 @@ export const MarkdownEditor = forwardRef(function MarkdownEditor(
   }, [debouncedValue, onChange])
 
   /*  const saveImage = async function* (data: any) {
-    const client = sanityClient.withConfig({apiVersion: '2021-03-25'})
 
     let success = true
     const result = await client.assets

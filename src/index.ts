@@ -11,7 +11,7 @@ export const markdownSchema = createPlugin({
   schema: {
     types: [
       defineType({
-        type: 'string',
+        type: 'string' as const,
         name: 'markdown',
         title: 'Markdown',
         components: {
