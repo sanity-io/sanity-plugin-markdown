@@ -1,23 +1,16 @@
 import {MarkdownEditor as Editor} from './components/Editor'
-import {createPlugin, defineType} from 'sanity'
+import {createPlugin} from 'sanity'
+import {markdownSchemaType, MarkdownDefinition} from './schema'
 
 // re-exporting MarkdownEditor directly explodes @parcel/transformer-typescript-types :shrug:
 const MarkdownEditor = Editor
 
-export {MarkdownEditor}
+export {MarkdownEditor, markdownSchemaType}
+export type {MarkdownDefinition}
 
 export const markdownSchema = createPlugin({
   name: 'markdown-editor',
   schema: {
-    types: [
-      defineType({
-        type: 'string' as const,
-        name: 'markdown',
-        title: 'Markdown',
-        components: {
-          input: MarkdownEditor,
-        },
-      }),
-    ],
+    types: [markdownSchemaType],
   },
 })

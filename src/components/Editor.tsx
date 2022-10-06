@@ -1,7 +1,6 @@
 import MDEditor from '@uiw/react-md-editor'
 import useDebounce from '../hooks/useDebounce'
-import {PatchEvent, set, unset} from 'sanity/form'
-import {StringInputProps} from 'sanity'
+import {StringInputProps, PatchEvent, set, unset} from 'sanity'
 import React, {forwardRef, Ref, useEffect, useState} from 'react'
 import {Card, useTheme} from '@sanity/ui'
 import rehypeSanitize from 'rehype-sanitize'
