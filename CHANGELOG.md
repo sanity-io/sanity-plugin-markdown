@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0-v3-studio.3](https://github.com/sanity-io/sanity-plugin-markdown/compare/v3.0.0-v3-studio.2...v3.0.0-v3-studio.3) (2022-10-07)
+
+### Bug Fixes
+
+- **deps:** dev-preview.21 ([63f2394](https://github.com/sanity-io/sanity-plugin-markdown/commit/63f2394badd0ebe40eca94c5e3452502f3a3d88d))
+
 ## [3.0.0-v3-studio.2](https://github.com/sanity-io/sanity-plugin-markdown/compare/v3.0.0-v3-studio.1...v3.0.0-v3-studio.2) (2022-09-15)
 
 ### Bug Fixes
