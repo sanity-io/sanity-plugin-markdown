@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-markdown",
-  "version": "3.0.0-v3-studio.3",
+  "version": "3.0.0-v3-studio.4",
   "description": "Markdown fields in Sanity Studio. Supports Github flavored Markdown and image uploads.",
   "scripts": {
     "clean": "rimraf lib",
