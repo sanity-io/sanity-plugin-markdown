@@ -1,5 +1,3 @@
-*.tgz
-lib
 # Logs
 logs
 *.log
@@ -44,18 +42,17 @@ jspm_packages
 # VS Code settings
 .vscode
 
-# Lockfiles
-yarn.lock
+# IntelliJ
+.idea
+*.iml
 
 # Cache
 .cache
 
-# Compiled plugin
-/lib
-
-yalc.lock
+# Yalc
 .yalc
+yalc.lock
 
-.idea
+# Compiled plugin
+lib
 
-.parcel-cache

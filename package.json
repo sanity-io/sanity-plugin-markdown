@@ -2,11 +2,13 @@
   "name": "sanity-plugin-markdown",
   "version": "3.0.0-v3-studio.4",
   "description": "Markdown fields in Sanity Studio. Supports Github flavored Markdown and image uploads.",
+  "author": "Sanity.io <hello@sanity.io>",
+  "license": "MIT",
   "scripts": {
     "clean": "rimraf lib",
-    "prebuild": "npm run clean && plugin-kit verify-package --silent",
-    "build": "parcel build --no-cache",
-    "watch": "parcel watch",
+    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
+    "build": "pkg-utils build",
+    "watch": "pkg-utils watch",
     "link-watch": "plugin-kit link-watch",
     "lint": "eslint .",
     "format": "prettier src -w",
@@ -16,17 +18,22 @@
   },
   "source": "./src/index.ts",
   "main": "./lib/index.js",
-  "module": "./lib/index.modern.js",
-  "types": "./lib/index.d.ts",
+  "module": "./lib/index.esm.js",
+  "types": "./lib/src/index.d.ts",
   "exports": {
     ".": {
+      "types": "./lib/src/index.d.ts",
+      "source": "./src/index.ts",
+      "import": "./lib/index.esm.js",
       "require": "./lib/index.js",
-      "default": "./lib/index.modern.js"
+      "default": "./lib/index.esm.js"
     }
   },
   "files": [
     "src",
-    "lib"
+    "lib",
+    "v2-incompatible.js",
+    "sanity.json"
   ],
   "keywords": [
     "sanity",
@@ -35,8 +42,6 @@
     "markdown",
     "github flavored markdown"
   ],
-  "author": "Sanity.io <hello@sanity.io>",
-  "license": "MIT",
   "dependencies": {
     "@reach/auto-id": "^0.17.0",
     "@sanity/incompatible-plugin": "^1.0.4",
@@ -45,44 +50,45 @@
     "rehype-sanitize": "^5.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
     "@parcel/packager-ts": "^2.7.0",
     "@parcel/transformer-typescript-types": "^2.7.0",
-    "@sanity/plugin-kit": "^1.1.0-ecosystem-preset.5",
-    "@sanity/semantic-release-preset": "^2.0.1",
+    "@sanity/pkg-utils": "^1.16.2",
+    "@sanity/plugin-kit": "^2.0.6",
+    "@sanity/semantic-release-preset": "^2.0.2",
     "@types/styled-components": "^5.1.25",
-    "@typescript-eslint/eslint-plugin": "^5.12.0",
-    "@typescript-eslint/parser": "^5.12.0",
-    "eslint": "^8.7.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-sanity": "^5.1.0",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-sanity": "^6.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "parcel": "^2.7.0",
-    "prettier": "^2.5.1",
+    "prettier": "^2.7.1",
     "react": "^18.0.0",
     "rimraf": "^3.0.2",
-    "sanity": "3.0.0-dev-preview.22",
+    "sanity": "dev-preview || 3.0.0-rc.0",
     "styled-components": "^5.2.0",
-    "typescript": "4.7.4"
+    "typescript": "^4.8.4"
   },
   "peerDependencies": {
     "react": "^18.0.0",
-    "sanity": "dev-preview || 3.0.0-dev-preview.22",
+    "sanity": "dev-preview || 3.0.0-rc.0",
     "styled-components": "^5.2.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanity-io/sanity-plugin-markdown.git"
+    "url": "https://github.com/sanity-io/sanity-plugin-markdown.git"
   },
   "bugs": {
     "url": "https://github.com/sanity-io/sanity-plugin-markdown/issues"
   },
-  "homepage": "https://sanity.io",
+  "homepage": "https://github.com/sanity-io/sanity-plugin-markdown#readme",
   "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-markdown",
   "engines": {
     "node": ">=14.0.0"

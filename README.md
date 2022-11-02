@@ -39,7 +39,7 @@ Add it as a plugin in sanity.config.ts (or .js):
 ```js
 import { markdownSchema } from "sanity-plugin-markdown";
 
-export default createConfig({
+export default defineConfig({
   // ...
   plugins: [
     markdownSchema(),
@@ -69,8 +69,7 @@ const myDocument = {
 
 ## License
 
-MIT © Sanity.io
-See LICENSE
+MIT-licensed. See LICENSE.
 
 ## Develop & test
 
@@ -82,7 +81,7 @@ on how to run this plugin with hotreload in the studio.
 
 ### Release new version
 
-Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-plugin-markdown/actions).
-Make sure to select the main/v3 branch and check "Release new version".
+Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-plugin-markdown/actions/workflows/main.yml).
+Make sure to select the main branch and check "Release new version".
 
 Semantic release will only release on configured branches, so it is safe to run release on any branch.

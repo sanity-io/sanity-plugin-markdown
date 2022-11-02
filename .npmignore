@@ -1,8 +1,5 @@
-src
-*.tgz
 /test
 /coverage
-.babelrc
 .editorconfig
 .eslintrc
 .gitignore

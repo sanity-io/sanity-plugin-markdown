@@ -21,7 +21,5 @@ export const markdownSchemaType = defineType({
   type: 'string',
   name: markdownTypeName,
   title: 'Markdown',
-  components: {
-    input: MarkdownEditor,
-  },
+  ...({components: {input: MarkdownEditor}} as {}), //TODO revert when rc.1 ships
 })
