@@ -53,7 +53,7 @@
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
     "@sanity/pkg-utils": "^1.16.2",
-    "@sanity/plugin-kit": "^2.0.6",
+    "@sanity/plugin-kit": "^2.0.9",
     "@sanity/semantic-release-preset": "^2.0.2",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
