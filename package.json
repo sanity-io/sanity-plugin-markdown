@@ -52,10 +52,10 @@
     "watch": "pkg-utils watch"
   },
   "dependencies": {
-    "@reach/auto-id": "^0.17.0",
+    "@reach/auto-id": "^0.18.0",
     "@sanity/incompatible-plugin": "^1.0.4",
     "@sanity/ui": "1.0.0-beta.32",
-    "@uiw/react-md-editor": "^3.18.1",
+    "@uiw/react-md-editor": "^3.19.7",
     "rehype-sanitize": "^5.0.1"
   },
   "devDependencies": {
