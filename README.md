@@ -1,10 +1,14 @@
 # sanity-plugin-markdown
+
+> This is a **Sanity Studio v2** plugin.
+> For the v3 version, please refer to the [v3-branch](https://github.com/sanity-io/sanity-plugin-markdown).
+
 A Markdown editor with preview for Sanity Studio. Supports Github flavored markdown and image uploads. You can either drag image(s) into the editor or click the bottom bar to bring up a file selector. The inserted image(s) has a default width crop in the url which you can change to your liking with the [Sanity image pipeline parameters](https://www.sanity.io/docs/image-urls).
 
 ## Installation
 
 ```
-sanity install markdown
+sanity install markdown@studio-v2
 ```
 
 ## Usage
