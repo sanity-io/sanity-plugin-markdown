@@ -1,10 +1,7 @@
 # sanity-plugin-markdown
 
-> **NOTE**
->
-> This is the **Sanity Studio v3 version** of sanity-plugin-markdown.
->
-> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-markdown).
+> This is a **Sanity Studio v3** plugin.
+> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-markdown/tree/studio-v2).
 
 ## What is it?
 
@@ -23,13 +20,13 @@ You can still add markdown image tags, but you will have to get the image url yo
 ## Installation
 
 ```
-npm install --save sanity-plugin-markdown@studio-v3
+npm install --save sanity-plugin-markdown
 ```
 
 or
 
 ```
-yarn add sanity-plugin-markdown@studio-v3
+yarn add sanity-plugin-markdown
 ```
 
 ## Usage
