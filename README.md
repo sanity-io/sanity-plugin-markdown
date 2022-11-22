@@ -7,8 +7,15 @@ A Markdown editor with preview for Sanity Studio. Supports Github flavored markd
 
 ## Installation
 
+```sh
+yarn add sanity-plugin-markdown@studio-v2
 ```
-sanity install markdown@studio-v2
+
+Next, add `"markdown"` to `sanity.json` plugins array:
+```json
+"plugins": [
+  "markdown"
+]
 ```
 
 ## Usage
