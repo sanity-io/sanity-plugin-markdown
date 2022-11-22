@@ -2,13 +2,6 @@
   "name": "sanity-plugin-markdown",
   "version": "2.1.1",
   "description": "Markdown fields in Sanity Studio. Supports Github flavored Markdown and image uploads.",
-  "scripts": {
-    "build": "sanipack build",
-    "watch": "sanipack build --watch",
-    "prepare": "husky install",
-    "lint": "eslint .",
-    "prepublishOnly": "sanipack build"
-  },
   "keywords": [
     "sanity",
     "sanity-plugin",
@@ -16,8 +9,38 @@
     "markdown",
     "github flavored markdown"
   ],
-  "author": "Sanity.io <hello@sanity.io>",
+  "homepage": "https://sanity.io",
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity-plugin-markdown/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sanity-io/sanity-plugin-markdown.git"
+  },
   "license": "MIT",
+  "author": "Sanity.io <hello@sanity.io>",
+  "scripts": {
+    "build": "sanipack build",
+    "lint": "eslint .",
+    "prepare": "husky install",
+    "prepublishOnly": "sanipack build",
+    "watch": "sanipack build --watch"
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "parser": "sanipack/babel/eslint-parser",
+    "extends": [
+      "sanity",
+      "sanity/react",
+      "prettier",
+      "prettier/react"
+    ]
+  },
   "dependencies": {
     "@reach/auto-id": "^0.13.2",
     "react-markdown": "^5.0.3",
@@ -42,28 +65,5 @@
   "peerDependencies": {
     "@sanity/base": "^2.21.5",
     "react": "^17.0.0"
-  },
-  "prettier": {
-    "semi": false,
-    "printWidth": 100,
-    "bracketSpacing": false,
-    "singleQuote": true
-  },
-  "eslintConfig": {
-    "parser": "sanipack/babel/eslint-parser",
-    "extends": [
-      "sanity",
-      "sanity/react",
-      "prettier",
-      "prettier/react"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sanity-io/sanity-plugin-markdown.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sanity-io/sanity-plugin-markdown/issues"
-  },
-  "homepage": "https://sanity.io"
+  }
 }
