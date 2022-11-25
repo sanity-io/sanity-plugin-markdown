@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/sanity-io/sanity-plugin-markdown/compare/v3.0.0...v3.0.1) (2022-11-25)
+
+### Bug Fixes
+
+- **deps:** sanity ^3.0.0 (works with rc.3) ([0efb593](https://github.com/sanity-io/sanity-plugin-markdown/commit/0efb5934319dee08542af4fd8bbc7b7e01118e44))
+
 ## [3.0.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v2.1.1...v3.0.0) (2022-11-17)
 
 ### ⚠ BREAKING CHANGES
