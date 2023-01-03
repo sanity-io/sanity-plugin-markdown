@@ -60,7 +60,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
-    "@sanity/pkg-utils": "^1.18.0",
+    "@sanity/pkg-utils": "^2.1.0",
     "@sanity/plugin-kit": "^2.1.16",
     "@sanity/semantic-release-preset": "^2.0.2",
     "@types/styled-components": "^5.1.26",
