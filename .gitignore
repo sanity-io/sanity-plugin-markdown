@@ -53,12 +53,8 @@ jspm_packages
 .yalc
 yalc.lock
 
+# npm package zips
+*.tgz
+
 # Compiled plugin
 lib
-
-#Build cache from v3 branch
-.parcel-cache
-
-# Intellij
-*.iml
-.idea
