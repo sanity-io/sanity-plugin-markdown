@@ -5,6 +5,7 @@ import {type Options as EasyMdeOptions} from 'easymde'
 import React, {forwardRef, Ref, useCallback, useMemo} from 'react'
 import SimpleMdeReact, {SimpleMDEReactProps} from 'react-simplemde-editor'
 import {PatchEvent, set, StringInputProps, unset, useClient} from 'sanity'
+import {MarkdownOptions} from '../schema'
 
 export interface MarkdownInputProps extends StringInputProps {
   /**
@@ -42,21 +43,23 @@ export const MarkdownInput = forwardRef(function MarkdownInput(
     onChange,
     elementProps: {onBlur, onFocus},
     reactMdeProps: {options: mdeCustomOptions, ...reactMdeProps} = {},
+    schemaType,
   } = props
   const client = useClient({apiVersion: '2022-01-01'})
   const {sanity: studioTheme} = useTheme()
+  const {imageUrl} = (schemaType.options as MarkdownOptions | undefined) ?? {}
 
   const imageUpload = useCallback(
     (file: File, onSuccess: (url: string) => void, onError: (error: string) => void) => {
       client.assets
         .upload('image', file)
-        .then((doc) => onSuccess(`${doc.url}?w=450`))
+        .then((doc) => onSuccess(imageUrl ? imageUrl(doc) : `${doc.url}?w=450`))
         .catch((e) => {
           console.error(e)
           onError(e.message)
         })
     },
-    [client]
+    [client, imageUrl]
   )
 
   const mdeOptions: EasyMdeOptions = useMemo(() => {
