@@ -7,26 +7,18 @@
 
 A Markdown editor with preview for Sanity Studio. 
 
-Supports Github flavored markdown and image uploads. You can either drag image(s) into the editor or click the bottom bar to bring up a file selector. 
+Supports Github flavored markdown and image uploads. 
+You can either drag image(s) into the editor or click the bottom bar to bring up a file selector. 
 The resulting image URL(s) are inserted with a default width parameter which you can change to your liking using the [Sanity image pipeline parameters](https://www.sanity.io/docs/image-urls).
- 
-### Known issues with the current v3 version
 
-The v2 version used react-mde for editing. The current v3 version @uiw/react-md-editor. This may change before GA.
-
-At the moment the v3 version does not have drag-and-drop image upload support.
-You can still add markdown image tags, but you will have to get the image url yourself for now.
+The current version is a wrapper around [React SimpleMDE (EasyMDE) Markdown Editor](https://github.com/RIP21/react-simplemde-editor#react-simplemde-easymde-markdown-editor),
+and by extension [EasyMDE](https://github.com/Ionaru/easy-markdown-editor).
 
 ## Installation
+Install `sanity-plugin-markdown` and `easymde` (peer dependency).
 
 ```
-npm install --save sanity-plugin-markdown
-```
-
-or
-
-```
-yarn add sanity-plugin-markdown
+npm install --save sanity-plugin-markdown easymde
 ```
 
 ## Usage
@@ -59,9 +51,88 @@ const myDocument = {
   ]
 }
 ```
-### Demo
 
-![demo](https://user-images.githubusercontent.com/38528/113196621-91ec8780-9218-11eb-86cc-cf0adfa2fd01.gif)
+### Customizing the default markdown input editor
+
+The plugin takes an `input` config option that can be used in combination with the `MarkdownInput` export
+to configure the underlying React SimpleMDE component:
+
+* Create a custom component that wraps MarkdownInput
+* Memoize reactMdeProps and pass along
+
+```tsx
+// CustomMarkdownInput.tsx
+import { MarkdownInput, MarkdownInputProps } from 'sanity-plugin-markdown'
+
+export function CustomMarkdownInput(props) {
+  const reactMdeProps: MarkdownInputProps['reactMdeProps'] =
+    useMemo(() => {
+      return {
+        options: {
+          toolbar: ['bold', 'italic'],
+          // more options available, see:
+          // https://github.com/Ionaru/easy-markdown-editor#options-list
+        },
+        // more props available, see:
+        // https://github.com/RIP21/react-simplemde-editor#react-simplemde-easymde-markdown-editor
+      }
+    }, [])
+
+  return <MarkdownInput {...props} reactMdeProps={reactMdeProps} />
+}
+```
+Set the plugin input option:
+
+```ts
+// studio.config.ts
+import {markdownSchema} from 'sanity-plugin-markdown'
+import {CustomMarkdownInput} from './CustomMarkdownInput'
+
+export default defineConfig({
+  // ... rest of the config
+  plugins: [
+    markdownSchema({input: CustomMarkdownInput}),
+  ]
+})
+```
+
+### Customize editor for a single field
+
+Implement a custom input similar to the one above, and use it as `components.input` on the field directly.
+
+```ts
+defineField({
+  type: 'markdown',
+  name: 'markdown',
+  title: 'Markdown',
+  components: {input: CustomMarkdownInput}
+})
+```
+
+### Custom image urls
+
+Provide a function to options.imageUrl that takes a SanityImageAssetDocument and returns a string.
+
+The function will be invoked whenever an image is pasted or dragged into the markdown editor, 
+after upload completes.
+
+The default implementation uses
+```js
+imageAsset => `${imageAsset.url}?w=450`
+```
+
+#### Example imageUrl option
+
+```js
+defineField({
+  type: 'markdown',
+  name: 'markdown',
+  title: 'Markdown',
+  options: {
+    imageUrl: imageAsset => `${imageAsset.url}?w=400&h=400`
+  }
+})
+```
 
 
 ## License
