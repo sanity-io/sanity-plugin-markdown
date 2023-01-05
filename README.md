@@ -12,7 +12,9 @@ You can either drag image(s) into the editor or click the bottom bar to bring up
 The resulting image URL(s) are inserted with a default width parameter which you can change to your liking using the [Sanity image pipeline parameters](https://www.sanity.io/docs/image-urls).
 
 The current version is a wrapper around [React SimpleMDE (EasyMDE) Markdown Editor](https://github.com/RIP21/react-simplemde-editor#react-simplemde-easymde-markdown-editor),
-and by extension [EasyMDE](https://github.com/Ionaru/easy-markdown-editor).
+and by extension, [EasyMDE](https://github.com/Ionaru/easy-markdown-editor).
+
+![example.png](./assets/example.png)
 
 ## Installation
 Install `sanity-plugin-markdown` and `easymde` (peer dependency).
@@ -109,6 +111,43 @@ defineField({
 })
 ```
 
+### Customizing editor preview
+
+One way to customize the preview that does not involve ReactDOMServer 
+(used by React SimpleMDE) is to install [marked](https://github.com/markedjs/marked) and
+[DOMPurify](https://github.com/cure53/DOMPurify) and create a custom preview:
+
+`npm i marked dompurify`
+
+Then use these to create a custom editor:
+
+```tsx
+// MarkdownInputCustomPreview.tsx
+import { MarkdownInput, MarkdownInputProps } from 'sanity-plugin-markdown'
+import DOMPurify from 'dompurify'
+import {marked} from 'marked'
+
+export function CustomMarkdownInput(props) {
+  const reactMdeProps: MarkdownInputProps['reactMdeProps'] =
+    useMemo(() => {
+      return {
+        options: {
+          previewRender: (markdownText) => {
+            // configure as needed according to 
+            // https://github.com/markedjs/marked#docs
+            return DOMPurify.sanitize(marked.parse(markdownText))
+          }
+          //customizing using renderingConfig is also an option
+        },
+      }
+    }, [])
+
+  return <MarkdownInput {...props} reactMdeProps={reactMdeProps} />
+}
+```
+
+Use the component as described in previous sections.
+
 ### Custom image urls
 
 Provide a function to options.imageUrl that takes a SanityImageAssetDocument and returns a string.
@@ -133,7 +172,6 @@ defineField({
   }
 })
 ```
-
 
 ## License
 
