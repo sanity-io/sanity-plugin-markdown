@@ -1,11 +1,10 @@
 import 'easymde/dist/easymde.min.css'
-
-import {useTheme} from '@sanity/ui'
 import {type Options as EasyMdeOptions} from 'easymde'
-import React, {forwardRef, Ref, useCallback, useMemo} from 'react'
+import React, {useCallback, useMemo} from 'react'
 import SimpleMdeReact, {SimpleMDEReactProps} from 'react-simplemde-editor'
 import {PatchEvent, set, StringInputProps, unset, useClient} from 'sanity'
 import {MarkdownOptions} from '../schema'
+import {MarkdownInputStyles} from './MarkdownInputStyles'
 
 export interface MarkdownInputProps extends StringInputProps {
   /**
@@ -34,19 +33,15 @@ export const defaultMdeTools: EasyMdeOptions['toolbar'] = [
   'side-by-side',
 ]
 
-export const MarkdownInput = forwardRef(function MarkdownInput(
-  props: MarkdownInputProps,
-  ref: Ref<any>
-) {
+export function MarkdownInput(props: MarkdownInputProps) {
   const {
     value = '',
     onChange,
-    elementProps: {onBlur, onFocus},
+    elementProps: {onBlur, onFocus, ref},
     reactMdeProps: {options: mdeCustomOptions, ...reactMdeProps} = {},
     schemaType,
   } = props
   const client = useClient({apiVersion: '2022-01-01'})
-  const {sanity: studioTheme} = useTheme()
   const {imageUrl} = (schemaType.options as MarkdownOptions | undefined) ?? {}
 
   const imageUpload = useCallback(
@@ -70,6 +65,7 @@ export const MarkdownInput = forwardRef(function MarkdownInput(
       uploadImage: true,
       imageUploadFunction: imageUpload,
       toolbar: defaultMdeTools,
+      status: false,
       ...mdeCustomOptions,
     }
   }, [imageUpload, mdeCustomOptions])
@@ -82,9 +78,10 @@ export const MarkdownInput = forwardRef(function MarkdownInput(
   )
 
   return (
-    <div ref={ref} data-color-mode={studioTheme.color.dark ? 'dark' : 'light'}>
+    <MarkdownInputStyles>
       <SimpleMdeReact
         {...reactMdeProps}
+        ref={ref}
         value={value}
         onChange={handleChange}
         onBlur={onBlur}
@@ -92,6 +89,6 @@ export const MarkdownInput = forwardRef(function MarkdownInput(
         options={mdeOptions}
         spellCheck={false}
       />
-    </div>
+    </MarkdownInputStyles>
   )
-})
+}
