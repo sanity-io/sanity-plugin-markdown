@@ -17,10 +17,10 @@ and by extension, [EasyMDE](https://github.com/Ionaru/easy-markdown-editor).
 ![example.png](./assets/example.png)
 
 ## Installation
-Install `sanity-plugin-markdown` and `easymde` (peer dependency).
+Install `sanity-plugin-markdown` and `easymde@2` (peer dependency).
 
 ```
-npm install --save sanity-plugin-markdown easymde
+npm install --save sanity-plugin-markdown easymde@2
 ```
 
 ## Usage
