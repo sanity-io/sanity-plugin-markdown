@@ -5,6 +5,22 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v3.0.1...v4.0.0) (2023-01-12)
+
+### ⚠ BREAKING CHANGES
+
+- easymde is now a required peer dependency which must be installed as well.
+
+### Features
+
+- now uses type react-simplemde-editor as editor ([79b481e](https://github.com/sanity-io/sanity-plugin-markdown/commit/79b481e6eedb0a83f2a265ef17b5ed9821b30128))
+- override image-url generation with options.imageUrl ([b95250b](https://github.com/sanity-io/sanity-plugin-markdown/commit/b95250b6cbeeebeb4b7538e0a3ad151619155fdd))
+
+### Bug Fixes
+
+- **deps:** applied npx @sanity/plugin-kit inject ([082a732](https://github.com/sanity-io/sanity-plugin-markdown/commit/082a7324199cb2cddd9fc73d6f456b6fadd197c4))
+- preview styles ([1852211](https://github.com/sanity-io/sanity-plugin-markdown/commit/18522110b164a76b7fd3fce52a839d6ee4f66e76))
+
 ## [3.0.1](https://github.com/sanity-io/sanity-plugin-markdown/compare/v3.0.0...v3.0.1) (2022-11-25)
 
 ### Bug Fixes
