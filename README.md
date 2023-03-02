@@ -53,6 +53,20 @@ const myDocument = {
   ]
 }
 ```
+### Next.js compatability
+Next.js *without* Next 13 app directory does not support css imports from `node_modules`. 
+
+To use this plugin in this context (`pages` directory), use the `sanity-plugin-markdown/next` import instead of `sanity-plugin-markdown`:
+```js
+import { markdownSchema } from "sanity-plugin-markdown/next";
+```
+
+Then, make sure to add 
+```js
+import 'easymde/dist/easymde.min.css'
+```
+
+to  the top of `pages/_app.tsx`.
 
 ### Customizing the default markdown input editor
 

@@ -1,10 +1,12 @@
-import 'easymde/dist/easymde.min.css'
 import {type Options as EasyMdeOptions} from 'easymde'
-import React, {useCallback, useMemo} from 'react'
-import SimpleMdeReact, {SimpleMDEReactProps} from 'react-simplemde-editor'
+import React, {Suspense, useCallback, useMemo} from 'react'
+// dont import non-types here, it will break SSR on next
+import type {SimpleMDEReactProps} from 'react-simplemde-editor'
 import {PatchEvent, set, StringInputProps, unset, useClient} from 'sanity'
 import {MarkdownOptions} from '../schema'
 import {MarkdownInputStyles} from './MarkdownInputStyles'
+import {useSimpleMdeReact} from './useSimpleMdeReact'
+import {Box, Text} from '@sanity/ui'
 
 export interface MarkdownInputProps extends StringInputProps {
   /**
@@ -77,18 +79,30 @@ export function MarkdownInput(props: MarkdownInputProps) {
     [onChange]
   )
 
+  const SimpleMdeReact = useSimpleMdeReact()
+
   return (
     <MarkdownInputStyles>
-      <SimpleMdeReact
-        {...reactMdeProps}
-        ref={ref}
-        value={value}
-        onChange={handleChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        options={mdeOptions}
-        spellCheck={false}
-      />
+      {SimpleMdeReact && (
+        <Suspense
+          fallback={
+            <Box padding={3}>
+              <Text>Loading editor...</Text>
+            </Box>
+          }
+        >
+          <SimpleMdeReact
+            {...reactMdeProps}
+            ref={ref}
+            value={value}
+            onChange={handleChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            options={mdeOptions}
+            spellCheck={false}
+          />
+        </Suspense>
+      )}
     </MarkdownInputStyles>
   )
 }

@@ -23,9 +23,16 @@
     ".": {
       "types": "./lib/index.d.ts",
       "source": "./src/index.ts",
-      "import": "./lib/index.esm.js",
       "require": "./lib/index.js",
+      "import": "./lib/index.esm.js",
       "default": "./lib/index.esm.js"
+    },
+    "./next": {
+      "types": "./lib/index.d.ts",
+      "source": "./src/indexNext.ts",
+      "require": "./lib/indexNext.js",
+      "import": "./lib/indexNext.esm.js",
+      "default": "./lib/indexNext.esm.js"
     },
     "./package.json": "./package.json"
   },
@@ -33,6 +40,13 @@
   "module": "./lib/index.esm.js",
   "source": "./src/index.ts",
   "types": "./lib/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "next": [
+        "./lib/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "lib",
     "sanity.json",
@@ -59,8 +73,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
-    "@sanity/pkg-utils": "^2.1.0",
-    "@sanity/plugin-kit": "^3.1.1",
+    "@sanity/pkg-utils": "^2.2.6",
+    "@sanity/plugin-kit": "^3.1.7",
     "@sanity/semantic-release-preset": "^2.0.2",
     "@types/react": "^18.0.26",
     "@types/styled-components": "^5.1.26",

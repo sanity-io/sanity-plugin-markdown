@@ -58,3 +58,6 @@ yalc.lock
 
 # Compiled plugin
 lib
+
+# Output from pakg-utils we dont care about
+next.js
