@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v4.0.0...v4.1.0) (2023-03-02)
+
+### Features
+
+- next.js pages compatability - see readme for details ([288398b](https://github.com/sanity-io/sanity-plugin-markdown/commit/288398bd01169f00467bed8e51760f055427c5be))
+
 ## [4.0.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v3.0.1...v4.0.0) (2023-01-12)
 
 ### ⚠ BREAKING CHANGES
