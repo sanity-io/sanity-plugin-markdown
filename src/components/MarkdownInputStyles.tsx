@@ -18,7 +18,7 @@ export const MarkdownInputStyles = styled(Box)`
   }
 
   & .CodeMirror-focused .CodeMirror-selected.CodeMirror-selected.CodeMirror-selected {
-    background-color: ${({theme}) => theme.sanity.color.selectable.primary.hovered.bg};
+    background-color: ${({theme}) => theme.sanity.color.input.default.disabled.fg};
   }
 
   & .CodeMirror-selected.CodeMirror-selected.CodeMirror-selected {
