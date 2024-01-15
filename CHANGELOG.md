@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/sanity-io/sanity-plugin-markdown/compare/v4.1.0...v4.1.1) (2024-01-15)
+
+### Bug Fixes
+
+- **deps:** update dependency @sanity/ui to v1.3.3 ([#53](https://github.com/sanity-io/sanity-plugin-markdown/issues/53)) ([489e9f0](https://github.com/sanity-io/sanity-plugin-markdown/commit/489e9f04a7720a542784ec64ca7873b816ab2526))
+- use typed theme object and optional chain access for selectable colors ([e5627c4](https://github.com/sanity-io/sanity-plugin-markdown/commit/e5627c4c68b358c66b1d18017c4e9cf410486622))
+
 ## [4.1.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v4.0.0...v4.1.0) (2023-03-02)
 
 ### Features
