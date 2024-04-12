@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/sanity-io/sanity-plugin-markdown/compare/v4.1.1...v4.1.2) (2024-04-12)
+
+### Bug Fixes
+
+- **core:** updated styled-components peer dependency ([#95](https://github.com/sanity-io/sanity-plugin-markdown/issues/95)) ([b94cce9](https://github.com/sanity-io/sanity-plugin-markdown/commit/b94cce97de11a20ef379ab594df48a95f4c6a03a))
+
 ## [4.1.1](https://github.com/sanity-io/sanity-plugin-markdown/compare/v4.1.0...v4.1.1) (2024-01-15)
 
 ### Bug Fixes
