@@ -19,31 +19,29 @@
   },
   "license": "MIT",
   "author": "Sanity.io <hello@sanity.io>",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
       "source": "./src/index.ts",
+      "import": "./lib/index.mjs",
       "require": "./lib/index.js",
-      "import": "./lib/index.esm.js",
-      "default": "./lib/index.esm.js"
+      "default": "./lib/index.js"
     },
     "./next": {
-      "types": "./lib/index.d.ts",
       "source": "./src/indexNext.ts",
+      "import": "./lib/indexNext.mjs",
       "require": "./lib/indexNext.js",
-      "import": "./lib/indexNext.esm.js",
-      "default": "./lib/indexNext.esm.js"
+      "default": "./lib/indexNext.js"
     },
     "./package.json": "./package.json"
   },
   "main": "./lib/index.js",
   "module": "./lib/index.esm.js",
-  "source": "./src/index.ts",
   "types": "./lib/index.d.ts",
   "typesVersions": {
     "*": {
       "next": [
-        "./lib/index.d.ts"
+        "./lib/indexNext.d.ts"
       ]
     }
   },
@@ -54,60 +52,58 @@
     "v2-incompatible.js"
   ],
   "scripts": {
-    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
-    "build": "run-s clean && plugin-kit verify-package --silent && pkg-utils build --strict && pkg-utils --strict",
-    "clean": "rimraf lib",
+    "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
     "compile": "tsc --noEmit",
     "format": "prettier --write --cache --ignore-unknown .",
     "link-watch": "plugin-kit link-watch",
     "lint": "eslint .",
     "prepare": "husky install",
-    "prepublishOnly": "run-s build",
+    "prepublishOnly": "npm run build",
     "watch": "pkg-utils watch --strict"
   },
+  "browserslist": "extends @sanity/browserslist-config",
+  "prettier": "@sanity/prettier-config",
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "^1.0.0",
+    "@sanity/ui": "^2.8.9",
     "react-simplemde-editor": "^5.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
-    "@sanity/pkg-utils": "^2.2.6",
-    "@sanity/plugin-kit": "^3.1.7",
+    "@sanity/pkg-utils": "^6.11.0",
+    "@sanity/plugin-kit": "^4.0.18",
+    "@sanity/prettier-config": "^1.0.3",
     "@sanity/semantic-release-preset": "^2.0.2",
-    "@types/react": "^18.0.26",
-    "@types/styled-components": "^5.1.26",
+    "@types/react": "^18.3.5",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "easymde": "^2.18.0",
     "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-sanity": "^6.0.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.1",
-    "prettier-plugin-packagejson": "^2.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
-    "rimraf": "^5.0.0",
-    "sanity": "^3.1.4",
-    "styled-components": "^5.3.6",
-    "typescript": "^5.0.0"
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-is": "^18.3.1",
+    "sanity": "^3.57.1",
+    "styled-components": "^6.1.13",
+    "typescript": "5.5.4"
   },
   "peerDependencies": {
-    "easymde": "^2",
-    "react": "^18",
-    "sanity": "^3",
-    "styled-components": "^5.2 || ^6"
+    "easymde": "^2.18",
+    "react": "^18.3",
+    "sanity": "^3.23",
+    "styled-components": "^6.1"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-markdown"
 }

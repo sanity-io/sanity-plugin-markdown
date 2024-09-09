@@ -5,10 +5,10 @@
 
 ## What is it?
 
-A Markdown editor with preview for Sanity Studio. 
+A Markdown editor with preview for Sanity Studio.
 
-Supports Github flavored markdown and image uploads. 
-You can either drag image(s) into the editor or click the bottom bar to bring up a file selector. 
+Supports Github flavored markdown and image uploads.
+You can either drag image(s) into the editor or click the bottom bar to bring up a file selector.
 The resulting image URL(s) are inserted with a default width parameter which you can change to your liking using the [Sanity image pipeline parameters](https://www.sanity.io/docs/image-urls).
 
 The current version is a wrapper around [React SimpleMDE (EasyMDE) Markdown Editor](https://github.com/RIP21/react-simplemde-editor#react-simplemde-easymde-markdown-editor),
@@ -17,6 +17,7 @@ and by extension, [EasyMDE](https://github.com/Ionaru/easy-markdown-editor).
 ![example.png](./assets/example.png)
 
 ## Installation
+
 Install `sanity-plugin-markdown` and `easymde@2` (peer dependency).
 
 ```
@@ -28,13 +29,11 @@ npm install --save sanity-plugin-markdown easymde@2
 Add it as a plugin in sanity.config.ts (or .js):
 
 ```js
-import { markdownSchema } from "sanity-plugin-markdown";
+import {markdownSchema} from 'sanity-plugin-markdown'
 
 export default defineConfig({
   // ...
-  plugins: [
-    markdownSchema(),
-  ] 
+  plugins: [markdownSchema()],
 })
 ```
 
@@ -42,61 +41,65 @@ Then, declare a field in your schema to be `markdown`
 
 ```javascript
 const myDocument = {
-  type: "document",
-  name: "myDocument",
+  type: 'document',
+  name: 'myDocument',
   fields: [
     {
-      type: "markdown",
-      description: "A Github flavored markdown field with image uploading",
-      name: "bio"
-    }
-  ]
+      type: 'markdown',
+      description: 'A Github flavored markdown field with image uploading',
+      name: 'bio',
+    },
+  ],
 }
 ```
+
 ### Next.js compatability
-Next.js *without* Next 13 app directory does not support css imports from `node_modules`. 
+
+Next.js _without_ Next 13 app directory does not support css imports from `node_modules`.
 
 To use this plugin in this context (`pages` directory), use the `sanity-plugin-markdown/next` import instead of `sanity-plugin-markdown`:
+
 ```js
-import { markdownSchema } from "sanity-plugin-markdown/next";
+import {markdownSchema} from 'sanity-plugin-markdown/next'
 ```
 
-Then, make sure to add 
+Then, make sure to add
+
 ```js
 import 'easymde/dist/easymde.min.css'
 ```
 
-to  the top of `pages/_app.tsx`.
+to the top of `pages/_app.tsx`.
 
 ### Customizing the default markdown input editor
 
 The plugin takes an `input` config option that can be used in combination with the `MarkdownInput` export
 to configure the underlying React SimpleMDE component:
 
-* Create a custom component that wraps MarkdownInput
-* Memoize reactMdeProps and pass along
+- Create a custom component that wraps MarkdownInput
+- Memoize reactMdeProps and pass along
 
 ```tsx
 // CustomMarkdownInput.tsx
-import { MarkdownInput, MarkdownInputProps } from 'sanity-plugin-markdown'
+import {MarkdownInput, MarkdownInputProps} from 'sanity-plugin-markdown'
 
 export function CustomMarkdownInput(props) {
-  const reactMdeProps: MarkdownInputProps['reactMdeProps'] =
-    useMemo(() => {
-      return {
-        options: {
-          toolbar: ['bold', 'italic'],
-          // more options available, see:
-          // https://github.com/Ionaru/easy-markdown-editor#options-list
-        },
-        // more props available, see:
-        // https://github.com/RIP21/react-simplemde-editor#react-simplemde-easymde-markdown-editor
-      }
-    }, [])
+  const reactMdeProps: MarkdownInputProps['reactMdeProps'] = useMemo(() => {
+    return {
+      options: {
+        toolbar: ['bold', 'italic'],
+        // more options available, see:
+        // https://github.com/Ionaru/easy-markdown-editor#options-list
+      },
+      // more props available, see:
+      // https://github.com/RIP21/react-simplemde-editor#react-simplemde-easymde-markdown-editor
+    }
+  }, [])
 
   return <MarkdownInput {...props} reactMdeProps={reactMdeProps} />
 }
 ```
+
 Set the plugin input option:
 
 ```ts
@@ -106,9 +109,7 @@ import {CustomMarkdownInput} from './CustomMarkdownInput'
 
 export default defineConfig({
   // ... rest of the config
-  plugins: [
-    markdownSchema({input: CustomMarkdownInput}),
-  ]
+  plugins: [markdownSchema({input: CustomMarkdownInput})],
 })
 ```
 
@@ -121,13 +122,13 @@ defineField({
   type: 'markdown',
   name: 'markdown',
   title: 'Markdown',
-  components: {input: CustomMarkdownInput}
+  components: {input: CustomMarkdownInput},
 })
 ```
 
 ### Customizing editor preview
 
-One way to customize the preview that does not involve ReactDOMServer 
+One way to customize the preview that does not involve ReactDOMServer
 (used by React SimpleMDE) is to install [marked](https://github.com/markedjs/marked) and
 [DOMPurify](https://github.com/cure53/DOMPurify) and create a custom preview:
 
@@ -137,24 +138,23 @@ Then use these to create a custom editor:
 
 ```tsx
 // MarkdownInputCustomPreview.tsx
-import { MarkdownInput, MarkdownInputProps } from 'sanity-plugin-markdown'
+import {MarkdownInput, MarkdownInputProps} from 'sanity-plugin-markdown'
 import DOMPurify from 'dompurify'
 import {marked} from 'marked'
 
 export function CustomMarkdownInput(props) {
-  const reactMdeProps: MarkdownInputProps['reactMdeProps'] =
-    useMemo(() => {
-      return {
-        options: {
-          previewRender: (markdownText) => {
-            // configure as needed according to 
-            // https://github.com/markedjs/marked#docs
-            return DOMPurify.sanitize(marked.parse(markdownText))
-          }
-          //customizing using renderingConfig is also an option
+  const reactMdeProps: MarkdownInputProps['reactMdeProps'] = useMemo(() => {
+    return {
+      options: {
+        previewRender: (markdownText) => {
+          // configure as needed according to
+          // https://github.com/markedjs/marked#docs
+          return DOMPurify.sanitize(marked.parse(markdownText))
         },
-      }
-    }, [])
+        //customizing using renderingConfig is also an option
+      },
+    }
+  }, [])
 
   return <MarkdownInput {...props} reactMdeProps={reactMdeProps} />
 }
@@ -166,12 +166,13 @@ Use the component as described in previous sections.
 
 Provide a function to options.imageUrl that takes a SanityImageAssetDocument and returns a string.
 
-The function will be invoked whenever an image is pasted or dragged into the markdown editor, 
+The function will be invoked whenever an image is pasted or dragged into the markdown editor,
 after upload completes.
 
 The default implementation uses
+
 ```js
-imageAsset => `${imageAsset.url}?w=450`
+;(imageAsset) => `${imageAsset.url}?w=450`
 ```
 
 #### Example imageUrl option
@@ -182,8 +183,8 @@ defineField({
   name: 'markdown',
   title: 'Markdown',
   options: {
-    imageUrl: imageAsset => `${imageAsset.url}?w=400&h=400`
-  }
+    imageUrl: (imageAsset) => `${imageAsset.url}?w=400&h=400`,
+  },
 })
 ```
 
