@@ -69,8 +69,8 @@
     "react-simplemde-editor": "^5.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.2.0",
-    "@commitlint/config-conventional": "^17.2.0",
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.3",
     "@sanity/pkg-utils": "^6.11.0",
     "@sanity/plugin-kit": "^4.0.18",
     "@sanity/prettier-config": "^1.0.3",
