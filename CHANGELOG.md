@@ -5,6 +5,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v4.1.2...v5.0.0) (2024-09-09)
+
+### ⚠ BREAKING CHANGES
+
+- upgrade to `@sanity/ui` v2 (#100)
+
+### Features
+
+- upgrade to `@sanity/ui` v2 ([#100](https://github.com/sanity-io/sanity-plugin-markdown/issues/100)) ([6575f83](https://github.com/sanity-io/sanity-plugin-markdown/commit/6575f8311ad2ee3a0a42d61c4556dc595ef7e8ce))
+
 ## [4.1.2](https://github.com/sanity-io/sanity-plugin-markdown/compare/v4.1.1...v4.1.2) (2024-04-12)
 
 ### Bug Fixes
