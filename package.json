@@ -74,7 +74,7 @@
     "@sanity/pkg-utils": "^6.11.0",
     "@sanity/plugin-kit": "^4.0.18",
     "@sanity/prettier-config": "^1.0.3",
-    "@sanity/semantic-release-preset": "^2.0.2",
+    "@sanity/semantic-release-preset": "^4.1.8",
     "@types/react": "^18.3.5",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
