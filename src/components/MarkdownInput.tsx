@@ -1,12 +1,13 @@
 import {type Options as EasyMdeOptions} from 'easymde'
-import React, {Suspense, useCallback, useMemo} from 'react'
+import {lazy, Suspense, useCallback, useMemo, useSyncExternalStore} from 'react'
 // dont import non-types here, it will break SSR on next
 import type {SimpleMDEReactProps} from 'react-simplemde-editor'
 import {PatchEvent, set, StringInputProps, unset, useClient} from 'sanity'
 import {MarkdownOptions} from '../schema'
 import {MarkdownInputStyles} from './MarkdownInputStyles'
-import {useSimpleMdeReact} from './useSimpleMdeReact'
 import {Box, Text} from '@sanity/ui'
+
+const SimpleMdeReact = lazy(() => import('react-simplemde-editor'))
 
 export interface MarkdownInputProps extends StringInputProps {
   /**
@@ -14,7 +15,7 @@ export interface MarkdownInputProps extends StringInputProps {
    *
    * Note: MarkdownInput sets certain reactMdeProps.options by default.
    * These will be merged with any custom options.
-   * */
+   */
   reactMdeProps?: Omit<SimpleMDEReactProps, 'value' | 'onChange'>
 }
 
@@ -56,7 +57,7 @@ export function MarkdownInput(props: MarkdownInputProps) {
           onError(e.message)
         })
     },
-    [client, imageUrl]
+    [client, imageUrl],
   )
 
   const mdeOptions: EasyMdeOptions = useMemo(() => {
@@ -76,33 +77,42 @@ export function MarkdownInput(props: MarkdownInputProps) {
     (newValue: string) => {
       onChange(PatchEvent.from(newValue ? set(newValue) : unset()))
     },
-    [onChange]
+    [onChange],
   )
 
-  const SimpleMdeReact = useSimpleMdeReact()
+  const mounted = useSyncExternalStore(
+    noop,
+    () => true,
+    () => false,
+  )
+
+  if (!mounted) {
+    return <MarkdownInputStyles>{fallback}</MarkdownInputStyles>
+  }
 
   return (
     <MarkdownInputStyles>
-      {SimpleMdeReact && (
-        <Suspense
-          fallback={
-            <Box padding={3}>
-              <Text>Loading editor...</Text>
-            </Box>
-          }
-        >
-          <SimpleMdeReact
-            {...reactMdeProps}
-            ref={ref}
-            value={value}
-            onChange={handleChange}
-            onBlur={onBlur}
-            onFocus={onFocus}
-            options={mdeOptions}
-            spellCheck={false}
-          />
-        </Suspense>
-      )}
+      <Suspense fallback={fallback}>
+        <SimpleMdeReact
+          {...reactMdeProps}
+          ref={ref}
+          value={value}
+          onChange={handleChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          options={mdeOptions}
+          spellCheck={false}
+        />
+      </Suspense>
     </MarkdownInputStyles>
   )
 }
+
+// eslint-disable-next-line no-empty-function
+const noop = () => () => {}
+
+const fallback = (
+  <Box padding={3}>
+    <Text>Loading editor...</Text>
+  </Box>
+)

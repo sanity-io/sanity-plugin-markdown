@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "moduleResolution": "node",
     "target": "esnext",
-    "module": "esnext",
+    "module": "preserve",
+    "jsx": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "esModuleInterop": true,
     "strict": true,

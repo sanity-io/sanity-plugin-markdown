@@ -5,6 +5,13 @@ export default defineConfig({
   dist: 'lib',
   tsconfig: 'tsconfig.lib.json',
 
+  rollup: {
+    treeshake: {
+      // Prevent treeshaking the `easymde/dist/easymde.min.css` import in index.ts
+      moduleSideEffects: true,
+    },
+  },
+
   // Remove this block to enable strict export validation
   extract: {
     rules: {

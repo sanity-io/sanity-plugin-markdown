@@ -28,7 +28,8 @@ module.exports = {
     'react/no-unused-prop-types': 'off',
     'react/no-array-index-key': 'off',
     'react/display-name': 0,
-    camelcase: 'off',
+    'camelcase': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   settings: {
     'import/ignore': ['\\.css$', '.*node_modules.*', '.*:.*'],
