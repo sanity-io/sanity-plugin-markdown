@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.0.0...v5.1.0) (2025-03-07)
+
+### Features
+
+- add react 19 to peer deps ([6f41a72](https://github.com/sanity-io/sanity-plugin-markdown/commit/6f41a7248553edc28708d8b142a1bf491d02d2cf))
+
 ## [5.0.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v4.1.2...v5.0.0) (2024-09-09)
 
 ### ⚠ BREAKING CHANGES
