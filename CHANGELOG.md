@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.1.0...v5.1.1) (2025-06-05)
+
+### Bug Fixes
+
+- forward focus state ([87e02f2](https://github.com/sanity-io/sanity-plugin-markdown/commit/87e02f2295c5f0e34f7cbff22877d0634d9b364d))
+
 ## [5.1.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.0.0...v5.1.0) (2025-03-07)
 
 ### Features
