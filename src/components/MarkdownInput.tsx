@@ -1,5 +1,5 @@
 import {type Options as EasyMdeOptions} from 'easymde'
-import {lazy, Suspense, useCallback, useMemo, useSyncExternalStore} from 'react'
+import {lazy, Suspense, useCallback, useMemo} from 'react'
 // dont import non-types here, it will break SSR on next
 import type {SimpleMDEReactProps} from 'react-simplemde-editor'
 import {PatchEvent, set, StringInputProps, unset, useClient} from 'sanity'
@@ -43,6 +43,7 @@ export function MarkdownInput(props: MarkdownInputProps) {
     elementProps: {onBlur, onFocus, ref},
     reactMdeProps: {options: mdeCustomOptions, ...reactMdeProps} = {},
     schemaType,
+    focused,
   } = props
   const client = useClient({apiVersion: '2022-01-01'})
   const {imageUrl} = (schemaType.options as MarkdownOptions | undefined) ?? {}
@@ -62,7 +63,6 @@ export function MarkdownInput(props: MarkdownInputProps) {
 
   const mdeOptions: EasyMdeOptions = useMemo(() => {
     return {
-      autofocus: false,
       spellChecker: false,
       sideBySideFullscreen: false,
       uploadImage: true,
@@ -70,8 +70,9 @@ export function MarkdownInput(props: MarkdownInputProps) {
       toolbar: defaultMdeTools,
       status: false,
       ...mdeCustomOptions,
+      autofocus: focused,
     }
-  }, [imageUpload, mdeCustomOptions])
+  }, [imageUpload, mdeCustomOptions, focused])
 
   const handleChange = useCallback(
     (newValue: string) => {
@@ -79,16 +80,6 @@ export function MarkdownInput(props: MarkdownInputProps) {
     },
     [onChange],
   )
-
-  const mounted = useSyncExternalStore(
-    noop,
-    () => true,
-    () => false,
-  )
-
-  if (!mounted) {
-    return <MarkdownInputStyles>{fallback}</MarkdownInputStyles>
-  }
 
   return (
     <MarkdownInputStyles>
@@ -107,9 +98,6 @@ export function MarkdownInput(props: MarkdownInputProps) {
     </MarkdownInputStyles>
   )
 }
-
-// eslint-disable-next-line no-empty-function
-const noop = () => () => {}
 
 const fallback = (
   <Box padding={3}>
