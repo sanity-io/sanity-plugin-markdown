@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-markdown",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "description": "Markdown fields in Sanity Studio. Supports Github flavored Markdown and image uploads.",
   "keywords": [
     "sanity",

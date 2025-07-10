@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.1.1...v5.1.2) (2025-07-10)
+
+### Bug Fixes
+
+- **deps:** allow studio v4 in peer dep ranges ([#110](https://github.com/sanity-io/sanity-plugin-markdown/issues/110)) ([fdb99bb](https://github.com/sanity-io/sanity-plugin-markdown/commit/fdb99bb3a49ec5b397a8472f036f4db2fbd8418b))
+
 ## [5.1.1](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.1.0...v5.1.1) (2025-06-05)
 
 ### Bug Fixes
