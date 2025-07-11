@@ -1,6 +1,5 @@
 # sanity-plugin-markdown
 
-> This is a **Sanity Studio v3** plugin.
 > For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-markdown/tree/studio-v2).
 
 ## What is it?
