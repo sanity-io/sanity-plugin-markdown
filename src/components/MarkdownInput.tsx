@@ -1,5 +1,14 @@
 import {type Options as EasyMdeOptions} from 'easymde'
-import {lazy, Suspense, useCallback, useMemo} from 'react'
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 // dont import non-types here, it will break SSR on next
 import type {SimpleMDEReactProps} from 'react-simplemde-editor'
 import {PatchEvent, set, StringInputProps, unset, useClient} from 'sanity'
@@ -40,13 +49,18 @@ export function MarkdownInput(props: MarkdownInputProps) {
   const {
     value = '',
     onChange,
-    elementProps: {onBlur, onFocus, ref},
+    elementProps: {onBlur, onFocus, ref: elementRef},
     reactMdeProps: {options: mdeCustomOptions, ...reactMdeProps} = {},
     schemaType,
     focused,
   } = props
   const client = useClient({apiVersion: '2022-01-01'})
   const {imageUrl} = (schemaType.options as MarkdownOptions | undefined) ?? {}
+  const [shouldAutoFocus, setShouldAutoFocus] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  // Forward ref to parent form state
+  useImperativeHandle(elementRef, () => ref.current)
 
   const imageUpload = useCallback(
     (file: File, onSuccess: (url: string) => void, onError: (error: string) => void) => {
@@ -70,9 +84,31 @@ export function MarkdownInput(props: MarkdownInputProps) {
       toolbar: defaultMdeTools,
       status: false,
       ...mdeCustomOptions,
-      autofocus: focused,
+      autofocus: shouldAutoFocus,
     }
-  }, [imageUpload, mdeCustomOptions, focused])
+  }, [imageUpload, mdeCustomOptions, shouldAutoFocus])
+
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return undefined
+
+    if (focused && !shouldAutoFocus) {
+      // Do not set autofocus if the field already has focus
+      const raf = requestAnimationFrame(() =>
+        setShouldAutoFocus(!node.contains(document.activeElement)),
+      )
+      return () => cancelAnimationFrame(raf)
+    }
+
+    if (!focused && shouldAutoFocus) {
+      // If `focused` is false, and the current active focus is no longer within the editor, reset autofocus state
+      const raf = requestAnimationFrame(() =>
+        setShouldAutoFocus(node.contains(document.activeElement)),
+      )
+      return () => cancelAnimationFrame(raf)
+    }
+  }, [focused, shouldAutoFocus])
 
   const handleChange = useCallback(
     (newValue: string) => {

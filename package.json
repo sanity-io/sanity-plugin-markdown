@@ -64,7 +64,7 @@
   "browserslist": "extends @sanity/browserslist-config",
   "prettier": "@sanity/prettier-config",
   "dependencies": {
-    "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/incompatible-plugin": "^1.0.5",
     "@sanity/ui": "^2.8.9",
     "react-simplemde-editor": "^5.2.0"
   },
@@ -75,6 +75,7 @@
     "@sanity/plugin-kit": "^4.0.18",
     "@sanity/prettier-config": "^1.0.3",
     "@sanity/semantic-release-preset": "^2.0.5",
+    "@sanity/vision": "^4.1.1",
     "@types/react": "^18.3.5",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
@@ -92,8 +93,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-is": "^18.3.1",
-    "sanity": "^3.57.1",
-    "styled-components": "^6.1.13",
+    "sanity": "^4.1.1",
+    "styled-components": "^6.1.19",
     "typescript": "5.5.4"
   },
   "peerDependencies": {
