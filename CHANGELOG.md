@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.3](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.1.2...v5.1.3) (2025-07-25)
+
+### Bug Fixes
+
+- handle focus without regress ([404258a](https://github.com/sanity-io/sanity-plugin-markdown/commit/404258a0de21e7094e5b4049e4882fa93263383c)), closes [#109](https://github.com/sanity-io/sanity-plugin-markdown/issues/109)
+
 ## [5.1.2](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.1.1...v5.1.2) (2025-07-10)
 
 ### Bug Fixes
