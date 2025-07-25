@@ -62,4 +62,6 @@ lib
 # Output from pakg-utils we dont care about
 next.js
 
+# Output from Sanity test studio
 .sanity
+dist
