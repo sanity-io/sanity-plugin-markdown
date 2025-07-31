@@ -65,7 +65,7 @@
   "prettier": "@sanity/prettier-config",
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.5",
-    "@sanity/ui": "^2.8.9",
+    "@sanity/ui": "^3.0.5",
     "react-simplemde-editor": "^5.2.0"
   },
   "devDependencies": {
