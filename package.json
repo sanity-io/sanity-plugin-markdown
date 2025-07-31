@@ -100,7 +100,7 @@
   "peerDependencies": {
     "easymde": "^2.18",
     "react": "^18.3 || ^19",
-    "sanity": "^3.23 || ^4.0.0-0",
+    "sanity": "^4",
     "styled-components": "^6.1"
   },
   "engines": {
