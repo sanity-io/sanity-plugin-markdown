@@ -5,6 +5,19 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.1.3...v6.0.0) (2025-07-31)
+
+### ⚠ BREAKING CHANGES
+
+- **deps:** update dependency @sanity/ui to v3 (#112)
+- require sanity v4
+
+### Bug Fixes
+
+- **deps:** update dependency @sanity/ui to v3 ([#112](https://github.com/sanity-io/sanity-plugin-markdown/issues/112)) ([ae2997f](https://github.com/sanity-io/sanity-plugin-markdown/commit/ae2997feeccf4406a0931ed31600ca180837b49d))
+- mark sideEffects due to css import ([cda9a6f](https://github.com/sanity-io/sanity-plugin-markdown/commit/cda9a6f82e2afe5c44a14591f11dea0d6e580d4c))
+- require sanity v4 ([9fe34a3](https://github.com/sanity-io/sanity-plugin-markdown/commit/9fe34a3748b1e46964b720f15c43080084292c1f))
+
 ## [5.1.3](https://github.com/sanity-io/sanity-plugin-markdown/compare/v5.1.2...v5.1.3) (2025-07-25)
 
 ### Bug Fixes
